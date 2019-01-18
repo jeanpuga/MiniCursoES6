@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>Slide 1</section>
+
+
+
+            <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+                <p>Mini Curso ES6 · Introdução ao React</p>
+                <h2>spread</h2>
+                <pre><code class="hljs" data-trim contenteditable>
+					const [a, b, ...rest] = [1, 2, 3, 4, 5];
+
+					console.log(a); // 1
+					console.log(b); // 2
+					console.log(rest); // 3, 4, 5
+				</code></pre>
+            </section>
+
+            <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                <p>Mini Curso ES6 · Introdução ao React</p>
+                <h2>destruturing</h2>
+                <pre><code class="hljs" data-trim contenteditable>
+
+					//Destruturing
+					const person1 = { name: 'Jean', age: 43 };
+					
+					const { name, age } = person1;
+					
+					console.log(name);
+					console.log(age);
+				</code></pre>
+            </section>
+
+            <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
+                <p>Mini Curso ES6 · Introdução ao React</p>
+                <h2>Classes e Herança</h2>
+                <pre><code class="hljs" data-trim contenteditable>
+					//Class
+					class Person {
+						constructor(name) {
+							this._name = name
+						}
+
+						getName() {
+							return this._name
+						}
+
+						setName(name) {
+							this._name = name
+						}
+					}
+
+					class Dev extends Person {
+						speak() {
+							console.log(`${this._name} faz pbi.`)
+						}
+					}
+
+					class PO extends Person {
+						speak() {
+							console.log(`${this._name} pede pbi.`)
+						}
+					}
+
+					const person2 = new Person('Moacir');
+					person2.getName();
+					person2.setName('Teobaldo');
+					person2.getName();
+
+				</code></pre>
+            </section>
+
+            <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+                <p>Mini Curso ES6 · Introdução ao React</p>
+                <h2>modulos</h2>
+                <pre><code class="hljs" data-trim contenteditable>
+					//Modulos
+					import { soma } from 'js/maths.js'
+
+					soma(1, 2)
+				</code></pre>
+            </section>
+
+
+
+
+
+        </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            dependencies: [{
+                src: 'plugin/markdown/marked.js'
+            }, {
+                src: 'plugin/markdown/markdown.js'
+            }, {
+                src: 'plugin/notes/notes.js',
+                async: true
+            }, {
+                src: 'plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }]
+        });
+    </script>
+</body>
+
+</html>
