@@ -6,49 +6,59 @@ console.log(b); // 2
 console.log(rest); // 3, 4, 5
 
 
-
-//Destruturing
-const person1 = { name: 'Jean', age: 43 };
-
-const { name, age } = person1;
-
-console.log(name);
-console.log(age);
-
-
 //Class
-class Person {
-    constructor(name) {
-        this._name = name
+class Brand{
+    static XPSeg(){
+        return {BrandCode:3, Name:'XPSeg'}
     }
-
-    getName() {
-        return this._name
+    static Rico(){
+        return {BrandCode:386, Name:'Rico'}
     }
-
-    setName(name) {
-        this._name = name
+    static Clear(){
+        return {BrandCode:308, Name:'Clear'}
     }
 }
 
-class Dev extends Person {
-    speak() {
-        console.log(`${this._name} faz pbi.`)
+class Portability {
+    constructor(insurerPortabilityCode) {
+        this.insurerPortabilityCode = insurerPortabilityCode;
+    }
+
+    print() {
+        console.log('insurerPortabilityCode', this.insurerPortabilityCode + '.');
     }
 }
 
-class PO extends Person {
-    speak() {
-        console.log(`${this._name} pede pbi.`)
+class Order {
+    constructor(insurerProposalCode) {
+        this.insurerProposalCode = insurerProposalCode;
+        this.portabilities = [];
+    }
+
+    print() {
+        console.log('InsurerCode', this.insurerProposalCode + '.');
+    }
+
+    addPortability(value){
+        this.portabilities.push(value);
     }
 }
 
-const person2 = new Person('Moacir');
-person2.getName();
-person2.setName('Teobaldo');
-person2.getName();
+class XPSeg extends Order {
+    constructor(insurerProposalCode) {
+        super(insurerProposalCode);
+    }
 
+    get Brand() {
+        return Brand.XPSeg();
+    }
 
+}
+
+const proposal = new XPSeg(123123) ;
+proposal.Brand;
+proposal.addPortability(new Portability(2222));
+proposal.portabilities.forEach(e=>console.log(e.insurerPortabilityCode));
 
 //Modulos
 import { soma } from 'js/maths.js'

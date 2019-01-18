@@ -44,14 +44,12 @@
 
             <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
                 <p>Mini Curso ES6 · Introdução ao React</p>
-                <h2>destruturing</h2>
+                <h2>destruturing assignment</h2>
                 <pre><code class="hljs" data-trim contenteditable>
-
-					//Destruturing
 					const person1 = { name: 'Jean', age: 43 };
-					
+
 					const { name, age } = person1;
-					
+
 					console.log(name);
 					console.log(age);
 				</code></pre>
@@ -61,37 +59,59 @@
                 <p>Mini Curso ES6 · Introdução ao React</p>
                 <h2>Classes e Herança</h2>
                 <pre><code class="hljs" data-trim contenteditable>
-					//Class
-					class Person {
-						constructor(name) {
-							this._name = name
-						}
 
-						getName() {
-							return this._name
-						}
+                    class Brand{
+                        static XPSeg(){
+                            return {BrandCode:3, Name:'XPSeg'}
+                        }
+                        static Rico(){
+                            return {BrandCode:386, Name:'Rico'}
+                        }
+                        static Clear(){
+                            return {BrandCode:308, Name:'Clear'}
+                        }
+                    }
 
-						setName(name) {
-							this._name = name
-						}
-					}
+                    class Portability {
+                        constructor(insurerPortabilityCode) {
+                            this.insurerPortabilityCode = insurerPortabilityCode;
+                        }
 
-					class Dev extends Person {
-						speak() {
-							console.log(`${this._name} faz pbi.`)
-						}
-					}
+                        print() {
+                            console.log('insurerPortabilityCode', this.insurerPortabilityCode + '.');
+                        }
+                    }
 
-					class PO extends Person {
-						speak() {
-							console.log(`${this._name} pede pbi.`)
-						}
-					}
+                    class Order {
+                        constructor(insurerProposalCode) {
+                            this.insurerProposalCode = insurerProposalCode;
+                            this.portabilities = [];
+                        }
 
-					const person2 = new Person('Moacir');
-					person2.getName();
-					person2.setName('Teobaldo');
-					person2.getName();
+                        print() {
+                            console.log('InsurerCode', this.insurerProposalCode + '.');
+                        }
+
+                        addPortability(value){
+                            this.portabilities.push(value);
+                        }
+                    }
+
+                    class XPSeg extends Order {
+                        constructor(insurerProposalCode) {
+                            super(insurerProposalCode);
+                        }
+
+                        get Brand() {
+                            return Brand.XPSeg();
+                        }
+
+                    }
+
+                    const proposal = new XPSeg(123123) ;
+                    proposal.Brand;
+                    proposal.addPortability(new Portability(2222));
+                    proposal.portabilities.forEach(e=>console.log(e.insurerPortabilityCode));
 
 				</code></pre>
             </section>
